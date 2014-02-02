@@ -9,8 +9,8 @@
 // Structural Characters
 #define QUOTE			'"'
 #define COMMA			','
-#define OPEN_BRACKET	'['
-#define CLOSE_BRACKET	']'
+#define OPEN_BRACKET		'['
+#define CLOSE_BRACKET		']'
 #define OPEN_BRACE		'{'
 #define CLOSE_BRACE		'}'
 #define PAIR			':'
