@@ -99,7 +99,7 @@ JsonError parse_boolean( char **jsonString, bool *b )
 
 	// Check chars and locate end
 	char *end = *jsonString;
-	while( isalpha( *end++ ) );
+	while( isalpha( *end ) ) end++;
 
 	char endChar = *end;
 	if ( endChar == COMMA || endChar == CLOSE_BRACKET || endChar == CLOSE_BRACE ) {
