@@ -6,6 +6,7 @@ INCLUDE=
 LIBRARIES=
 
 test: $(SRC)test.c $(SRC)json.c
+	mkdir -p $(BIN)
 	$(CC) $(CFLAGS) $(INCLUDE) $(SRC)test.c $(SRC)json.c -o $(BIN)test $(LIBRARIES) 
 
 clean:
