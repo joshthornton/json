@@ -33,7 +33,8 @@ typedef struct Json_t {
 /*
  * Takes a well formed jsonString and a pointer to a jsonObject.
  * Parses the json object and allocates jsonObject.
- * Returns 0 on success, error otherwise.
+ * jsonObject is a Json struct as described above. The type field indicates
+ * which of the union'd types is valid.
  */
 JsonError parse_json_string( char *jsonString, Json **jsonObject );
 
@@ -42,6 +43,9 @@ JsonError parse_json_string( char *jsonString, Json **jsonObject );
  */
 JsonError free_json_object( Json **jsonObject );
 
+/*
+ * Convience function to recursively print a json object
+ */
 JsonError pretty_print_json( Json *json, int depth );
 
 #endif
