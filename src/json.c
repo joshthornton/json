@@ -488,7 +488,7 @@ JsonError pretty_print_json( Json *json, int depth )
 	int i;
 	bool first;
 	for( i = 0; i < depth; i++ ) printf( "\t" );
-	if ( json->name ) printf( "%s : ", json->name );
+	if ( json->name ) printf( "\"%s\" : ", json->name );
 	switch ( json->type ) {
 	case NUMBER:
 		printf( "%lf", json->number );
