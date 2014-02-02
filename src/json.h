@@ -10,12 +10,12 @@ typedef enum {
 } JsonError;
 
 typedef enum {
-	/* NULL	=	0,*/
-	NUMBER	=	1,
-	STRING 	=	2,
-	BOOLEAN	=	4,
-	ARRAY	=	8,
-	OBJECT	=	16
+	NULL_TYPE	=	0,
+	NUMBER		=	1,
+	STRING 		=	2,
+	BOOLEAN		=	4,
+	ARRAY		=	8,
+	OBJECT		=	16
 } JsonType;
 
 typedef struct Json_t {
@@ -41,5 +41,7 @@ JsonError parse_json_string( char *jsonString, Json **jsonObject );
  * Correctly traverses a JSON object and frees all memory.
  */
 JsonError free_json_object( Json **jsonObject );
+
+JsonError pretty_print_json( Json *json, int depth );
 
 #endif
