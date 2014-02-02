@@ -14,7 +14,7 @@ typedef enum {
 	NUMBER	=	1,
 	STRING 	=	2,
 	BOOLEAN	=	4,
-	ARRAY	=	8,
+	ARRAY		=	8,
 	OBJECT	=	16
 } JsonType;
 
@@ -23,8 +23,8 @@ typedef struct Json_t {
 	char *name;
 	union {
 		double			number;
-		char			*string;
-		bool			boolean;
+		char				*string;
+		bool				boolean;
 		struct Json_t	**array;
 		struct Json_t	**object;
 	};
