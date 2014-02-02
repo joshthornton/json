@@ -168,11 +168,11 @@ JsonError parse_array( char **jsonString, Json ***array )
 			if ( parse_string( &end, &((*array)[length-1]->string) ) != SUCCESS )
 				goto error;
 			(*array)[length-1]->type = STRING;
-		} else if ( *end == OPEN_BRACKET ) { // (*array)
+		} else if ( *end == OPEN_BRACKET ) { // array
 			if ( parse_array( &end, &((*array)[length-1]->array) ) != SUCCESS )
 				goto error;
 			(*array)[length-1]->type = ARRAY;
-		} else if ( *end == OPEN_BRACE ) { // (*object)
+		} else if ( *end == OPEN_BRACE ) { // object
 			if ( parse_object( &end, &((*array)[length-1]->object) ) != SUCCESS )
 				goto error;
 			(*array)[length-1]->type = OBJECT;
@@ -186,7 +186,7 @@ JsonError parse_array( char **jsonString, Json ***array )
 		// Skip whitespace
 		while ( isspace( *end ) ) end++;
 		
-		// Check end of (*array)
+		// Check end of array
 		if ( *end == CLOSE_BRACKET ) {
 			break;
 		} else if ( *end == COMMA ) {
@@ -198,7 +198,7 @@ JsonError parse_array( char **jsonString, Json ***array )
 
 	}
 
-	// Null terminate (*array)
+	// Null terminate array
 	(*array)[length] = NULL;
 	*jsonString = end + 1;
 
@@ -231,7 +231,7 @@ JsonError parse_object( char **jsonString, Json ***object )
 		// Skip whitespace
 		while ( isspace( *end ) ) end++;
 
-		// Check end of (*object)
+		// Check end of object
 		if ( *end == CLOSE_BRACE ) {
 			break;
 		}
@@ -274,7 +274,7 @@ JsonError parse_object( char **jsonString, Json ***object )
 			if ( parse_string( &end, &((*object)[length-1]->string) ) != SUCCESS )
 				goto error;
 			(*object)[length-1]->type = STRING;
-		} else if ( *end == OPEN_BRACKET ) { // (*array)
+		} else if ( *end == OPEN_BRACKET ) { // array
 			if ( parse_array( &end, &((*object)[length-1]->array) ) != SUCCESS )
 				goto error;
 			(*object)[length-1]->type = ARRAY;
@@ -292,7 +292,7 @@ JsonError parse_object( char **jsonString, Json ***object )
 		// Skip whitespace
 		while ( isspace( *end ) ) end++;
 		
-		// Check end of (*object)
+		// Check end of object
 		if ( *end == CLOSE_BRACE ) {
 			break;
 		} else if ( *end == COMMA ) {
@@ -304,7 +304,7 @@ JsonError parse_object( char **jsonString, Json ***object )
 
 	}
 
-	// Null terminate (*object)
+	// Null terminate object
 	(*object)[length] = NULL;
 	*jsonString = end + 1;
 
@@ -318,7 +318,7 @@ JsonError parse_object( char **jsonString, Json ***object )
 		for ( int i = 0; i < length; i++ )
 			free_json_object( &(*(object)[i]) );
 
-		// Clean up (*array)
+		// Clean up object
 		free( (*object) );
 
 		return MALFORMED;
