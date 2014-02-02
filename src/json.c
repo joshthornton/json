@@ -82,7 +82,11 @@ JsonError parse_string( char **jsonString, char **string )
 	char *end = start + 1;
 
 	// Find closing quote
-	while ( *end != QUOTE || *(end - 1) == '\\' ) end++;
+	while ( ( *end != QUOTE || *(end - 1) == '\\') && *end != '\0' ) end++;
+
+	if ( *end == '\0' ) {
+		return MALFORMED;
+	}
 
 	*string = must_malloc( sizeof( char ) * (end - start) );
 	strncpy( *string, start + 1, (end - 1) - start );
