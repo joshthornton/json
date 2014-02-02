@@ -20,6 +20,9 @@ int main( int argc, char *argv[] )
 	pretty_print_json( json, 0 );
 	free_json_object( &json );
 
+	parse_json_string( "{ \"test\" : \"inline \\\" quote\" }", &json );
+	pretty_print_json( json, 0 );
+	free_json_object( &json );
 
 	parse_json_string( "{ \"test\" : [ 1, 2, null, false, { \"foo\" : \"bar\" } }", &json );
 
