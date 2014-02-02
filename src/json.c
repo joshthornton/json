@@ -54,6 +54,7 @@ JsonError parse_number( char **jsonString, double *d )
 
 	// Check number and locate end
 	char *end = *jsonString;
+	if ( *end == '-' ) end++; // Negative sign
 	while ( isdigit( *end ) ) end++;
 	if ( *end == '.' ) {
 		end++;
@@ -185,7 +186,7 @@ JsonError parse_array( char **jsonString, Json ***array )
 		}
 		
 		// NUMBER TYPE
-		else if ( isdigit( *end ) || *end == '.' ) {
+		else if ( isdigit( *end ) || *end == '.' || *end == '-' ) {
 			if ( parse_number( &end, &((*array)[length-1]->number) ) != SUCCESS )
 				goto error;
 			(*array)[length-1]->type = NUMBER;
