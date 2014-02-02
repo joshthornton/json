@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS =-Wall -Werror --std=gnu99 -g
+CFLAGS =-Wall -Werror --std=gnu99
 SRC =src/
 BIN =bin/
 INCLUDE=
