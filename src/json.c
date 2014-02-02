@@ -212,7 +212,7 @@ JsonError parse_array( char **jsonString, Json ***array )
 		for ( int i = 0; i < length; i++ )
 			free_json_object( &((*array)[i]) );
 
-		// Clean up (*array)
+		// Clean up array
 		free( (*array) );
 
 		return MALFORMED;
